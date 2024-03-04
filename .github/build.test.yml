@@ -1,0 +1,24 @@
+name: Test-Workflow
+
+on: #Trigger Zeitpunkt
+  push:
+    branches:
+      - test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: pipenv install --deploy
+      - name: Run unit tests #Führt Unit-Tests durch
+        run: pipenv run pytest
+      - name: Run integration tests #Führt einen Integrationstest durch
+        run: pipenv run ./integration_tests.py
+      - name: Create build artifact
+        if: success()
+        uses: actions/upload-artifact@v3 #Erstellt ein Artefakt mit der Build-Version beim erfolgreichem Testlauf
+        with:
+          name: quiz-game-build-${{ github.run_id }}
+          path: ./dist/
