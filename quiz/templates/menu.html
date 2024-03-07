@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz-App Hauptmenü</title>
+    <title>BrainBuster - Quiz</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'icon.jpg' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,10 +44,20 @@
             font-size: 18px;
             margin: 10px;
         }
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 4.5em;
+            width: 25%;
+            height: 25%;
+        }
         .impressum {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             text-align: center;
-            padding: 20px;
-            margin-top: 27em;
             background-color: rgb(251, 251, 251);
         }
     </style>
@@ -60,11 +72,12 @@
             <button onclick="window.location.href='about.html'">Über die App</button>
         </ul>
     </div>
-    <img src="logo.png" alt="logo">
+
+    <img src="{% static 'logo.jpg' %}" alt="logo" class="img">
 
     <div class="impressum">
         <p><strong>Impressum</strong></p>
-        <p>Anbieter:<br />Max Mustermann<br />Musterstraße 1<br />80999 München</p>
+        <p>Anbieter:<br />IT-Solutions<br />Musterstraße 1<br />80999 München</p>
         <p>Kontakt:<br />Telefon: 089/1234567-8<br />Telefax: 089/1234567-9<br />E-Mail: mail@mustermann.de<br />Website: www.mustermann.de</p>
     </div>
 
