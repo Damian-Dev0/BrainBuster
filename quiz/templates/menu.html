@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz-App Hauptmenü</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-y: hidden;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+        }
+        .impressum {
+            text-align: center;
+            padding: 20px;
+            margin-top: 27em;
+            background-color: rgb(251, 251, 251);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Willkommen zur Quiz-App</h1>
+        <ul>
+            <button onclick="window.location.href='start_quiz.html'">Quiz starten</button>
+            <button onclick="window.location.href='high_scores.html'">Bestenliste anzeigen</button>
+            <button onclick="window.location.href='settings.html'">Einstellungen</button>
+            <button onclick="window.location.href='about.html'">Über die App</button>
+        </ul>
+    </div>
+    <img src="logo.png" alt="logo">
+
+    <div class="impressum">
+        <p><strong>Impressum</strong></p>
+        <p>Anbieter:<br />Max Mustermann<br />Musterstraße 1<br />80999 München</p>
+        <p>Kontakt:<br />Telefon: 089/1234567-8<br />Telefax: 089/1234567-9<br />E-Mail: mail@mustermann.de<br />Website: www.mustermann.de</p>
+    </div>
+
+</body>
+</html>
