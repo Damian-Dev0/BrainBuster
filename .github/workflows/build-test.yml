@@ -25,7 +25,7 @@ jobs:
         pip install -r BrainBusterSite/requirements.txt
     - name: Run Tests
       run: |
-        python BrainBusterSite/manage.py test BrainBusterApp/tests.py
+        python BrainBusterSite/manage.py test BrainBusterApp.tests
 
     
   build-artifact:
