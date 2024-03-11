@@ -22,7 +22,7 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r BrainBusterSite/requirements.txt
     - name: Run Tests
       run: |
         python manage.py test
@@ -37,7 +37,7 @@ jobs:
       run: | 
         echo "Building artifact..."
         python3 setup.py sdist bdist_wheel
-        pip install -r requirements.txt
+        pip install -r BrainBusterSite/requirements.txt
         zip -r test-build.zip .
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
