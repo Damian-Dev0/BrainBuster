@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from BrainBusterApp.views import menu
 
 urlpatterns = [
     path('BrainBusterApp/', include('BrainBusterApp.urls')),
+    path('menu/', menu),
     path('admin/', admin.site.urls),
 ]
