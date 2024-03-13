@@ -22,8 +22,8 @@ from BrainBusterApp.views import login
 
 urlpatterns = [
     path('BrainBusterApp/', include('BrainBusterApp.urls')),
-    path('menu/', menu),
-    path('question/', question),
-    path('login/', login),
+    path('menu/', menu, name='menu'),
+    path('question/', question, name='question'),
+    path('login', login, name='login'),
     path('admin/', admin.site.urls),
 ]

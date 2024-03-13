@@ -7,7 +7,7 @@ from BrainBusterApp.views import login
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path('menu/', menu),
-    path('question/', question),
-    path('login/', login),
+    path('menu/', menu, name='menu'),
+    path('question/', question, name='question'),
+    path('login', login, name='login'),
 ]
