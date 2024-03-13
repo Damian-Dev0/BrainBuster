@@ -7,3 +7,9 @@ def index(request):
 
 def menu(request):
     return render(request, 'menu.html')
+
+def question(request):
+    return render(request, 'question.html')
+
+def login(request):
+    return render(request, 'login.html')
