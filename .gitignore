@@ -6,9 +6,6 @@ __pycache__/
 # C extensions
 *.so
 
-#GitHub Workflows
-workflows/*.yml
-
 # Distribution / packaging
 .Python
 build/
