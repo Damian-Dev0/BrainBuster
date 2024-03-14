@@ -22,7 +22,7 @@ jobs:
 
   push-to-test:
     needs: check-for-changes
-    if: ${{ steps.check-for-changes.outputs.check_changes == 'Changes found' }}
+    if: ${{ needs.check-for-changes.outputs.check_changes == 'Changes found' }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout des Codes
