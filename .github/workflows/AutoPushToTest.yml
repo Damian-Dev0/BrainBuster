@@ -12,9 +12,10 @@ jobs:
       check_changes: ${{ steps.check_changes.outputs.changes }}
     steps:
     - name: Checkout des Codes
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        token: ${{ secrets.GIT_TOKEN }}
       
     - name: Überprüfe Änderungen zwischen development und test
       id: check_changes
@@ -32,9 +33,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout des Codes
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        token: ${{ secrets.GIT_TOKEN }}
       
     - name: Automatisches Pushen nach Test-Branch
       run: git push origin development:test
