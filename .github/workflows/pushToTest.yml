@@ -16,10 +16,12 @@ jobs:
       id: check_changes
       run: |
         git fetch origin development:test
-        if git diff --quiet FETCH_HEAD..development; then
-          echo "No changes found"
-        else
+        development_commit=$(git rev-parse development)
+        test_commit=$(git rev-parse FETCH_HEAD)
+        if [ "$development_commit" != "$test_commit" ]; then
           echo "Changes found"
+        else
+          echo "No changes found"
         fi
 
   push-to-test:
