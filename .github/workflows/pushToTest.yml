@@ -2,8 +2,7 @@ name: Auto-Push nach Test-Branch
 
 on:
   push:
-    branches:
-      - development
+    branches: [development]
 
 jobs:
   check-for-changes:
