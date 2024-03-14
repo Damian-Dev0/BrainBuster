@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 #GitHub Workflows
-.github/workflows/build-test.yml
+workflows/*.yml
 
 # Distribution / packaging
 .Python
