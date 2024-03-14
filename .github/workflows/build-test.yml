@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Automatisches Pushen nach Main bei Erfolg
         if: success() && github.ref == 'refs/heads/test'
-        uses: ./build-test.yml@v1
+        uses: BrainBuster/.github/workflows/build.test.yml@v1
         with:
           github_token: ${{ secrets.GIT_TOKEN }}
           branch: main
