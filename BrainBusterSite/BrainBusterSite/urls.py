@@ -16,14 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from BrainBusterApp.views import menu
-from BrainBusterApp.views import question
-from BrainBusterApp.views import login
+from BrainBusterApp.views import menu, question, userLogin, register
+
 
 urlpatterns = [
     path('BrainBusterApp/', include('BrainBusterApp.urls')),
     path('menu/', menu, name='menu'),
     path('question/', question, name='question'),
-    path('login', login, name='login'),
+    path('login/', userLogin, name='login'),
+    path('register/', register, name='register'),
     path('admin/', admin.site.urls),
 ]
