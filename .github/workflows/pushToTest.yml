@@ -21,8 +21,6 @@ jobs:
           fi
       - name: Push to Test Branch
         run: |
-          paths-ignore:
-            -'**/*.yml'
           git checkout develop
           git pull
           git checkout test
