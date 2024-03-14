@@ -11,18 +11,16 @@ jobs:
     steps:
     - name: Checkout des Codes
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
       
     - name: Überprüfe Änderungen zwischen development und test
       id: check_changes
       run: |
-        git fetch origin development:test
-        development_commit=$(git rev-parse development)
-        test_commit=$(git rev-parse FETCH_HEAD)
-        if [ "$development_commit" != "$test_commit" ]; then
-          echo "Changes found"
-        else
-          echo "No changes found"
-        fi
+        git fetch origin development:test-changes
+        git diff --quiet HEAD test-changes || echo "Changes found"
+        git branch -D test-changes
+      continue-on-error: true
 
   push-to-test:
     needs: check-for-changes
@@ -31,6 +29,8 @@ jobs:
     steps:
     - name: Checkout des Codes
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
       
     - name: Automatisches Pushen nach Test-Branch
       run: git push origin development:test
