@@ -17,10 +17,7 @@ jobs:
     - name: Überprüfe Änderungen zwischen development und test
       id: check_changes
       run: |
-        git fetch origin development:test-changes
-        git diff --quiet HEAD test-changes || echo "Changes found"
-        git branch -D test-changes
-      continue-on-error: true
+        git diff --name-only origin/test origin/${GITHUB_HEAD_REF}
 
   push-to-test:
     needs: check-for-changes
