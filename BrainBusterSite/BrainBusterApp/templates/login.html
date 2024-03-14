@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainBuster - Quiz</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body onload="NextQuestion(0)">
+    <div class="login-wrap">
+        <h2>Login</h2>
+        
+        <div class="form">
+          <input type="text" placeholder="Username" name="un" />
+          <input type="password" placeholder="Password" name="pw" />
+          <button> Sign in </button>
+          <a href="#"> <p> Don't have an account? Register </p></a>
+        </div>
+      </div>
+</body>
+</html>
