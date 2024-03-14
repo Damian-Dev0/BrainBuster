@@ -1,0 +1,35 @@
+name: Push to Test Branch
+
+on:
+  push:
+    branches: [ "development" ]
+    paths-ignore:
+      -'**/*.yml'
+  pull_request:
+    branches: [ "development" ]
+    paths-ignore:
+      -'**/*.yml'
+
+jobs:
+  push-to-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check for Changes
+        run: |
+          git fetch origin development
+          if git diff --quiet origin/development HEAD; then
+            echo "No changes detected. Skipping push to test branch."
+            exit 0
+          fi
+      - name: Push to Test Branch
+        run: |
+          git checkout development
+          git pull
+          git checkout test
+          git merge development
+          git push origin HEAD:test
+          echo "Pushing changes to test branch."
+        env:
+          GH_PAT: ${{ secrets.GIT_TOKEN }}
+

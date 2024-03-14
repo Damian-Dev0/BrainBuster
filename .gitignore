@@ -36,6 +36,9 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
+#Git Stuff
+BrainBuster/.github/workflows/pushToTest.yml
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -127,6 +130,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+Scripts
+pyvenv.cfg
 
 # Spyder project settings
 .spyderproject
