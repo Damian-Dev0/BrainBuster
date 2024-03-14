@@ -2,10 +2,13 @@ name: Push to Test Branch
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "development" ]
+    paths-ignore:
+      -'**/*.yml'
   pull_request:
-    branches: [ "develop" ]
-
+    branches: [ "development" ]
+    paths-ignore:
+      -'**/*.yml'
 
 jobs:
   push-to-test:
