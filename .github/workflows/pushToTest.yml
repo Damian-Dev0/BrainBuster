@@ -17,11 +17,12 @@ jobs:
     - name: Überprüfe Änderungen zwischen development und test
       id: check_changes
       run: |
-        git diff --name-only origin/test origin/${GITHUB_HEAD_REF}
+        git fetch origin test
+        git diff --name-only origin/development origin/test
 
   push-to-test:
     needs: check-for-changes
-    if: ${{ needs.check-for-changes.outputs.check_changes == 'Changes found' }}
+    if: ${{ needs.check-for-changes.outputs.check_changes != '' }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout des Codes
