@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Check for Changes
         run: |
-          git fetch origin develop
+          git fetch origin development
           if git diff --quiet origin/development HEAD; then
             echo "No changes detected. Skipping push to test branch."
             exit 0
