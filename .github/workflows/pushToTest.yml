@@ -15,7 +15,12 @@ jobs:
     - name: Überprüfe Änderungen zwischen development und test
       id: check_changes
       run: |
-        git diff development...test || echo "Changes found"
+        git fetch origin development:test
+        if git diff --quiet FETCH_HEAD..development; then
+          echo "No changes found"
+        else
+          echo "Changes found"
+        fi
 
   push-to-test:
     needs: check-for-changes
