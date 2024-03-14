@@ -8,6 +8,8 @@ on:
 jobs:
   check-for-changes:
     runs-on: ubuntu-latest
+    outputs:
+      check_changes: ${{ steps.check_changes.outputs.changes }}
     steps:
     - name: Checkout des Codes
       uses: actions/checkout@v2
@@ -18,11 +20,15 @@ jobs:
       id: check_changes
       run: |
         git fetch origin test
-        git diff --name-only origin/development origin/test
+        if git diff --quiet origin/development origin/test; then
+          echo "::set-output name=changes::No changes found"
+        else
+          echo "::set-output name=changes::Changes found"
+        fi
 
   push-to-test:
     needs: check-for-changes
-    if: ${{ needs.check-for-changes.outputs.check_changes != '' }}
+    if: ${{ needs.check-for-changes.outputs.check_changes == 'Changes found' }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout des Codes
