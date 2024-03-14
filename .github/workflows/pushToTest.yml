@@ -15,7 +15,7 @@ jobs:
     - name: Überprüfe Änderungen zwischen development und test
       id: check_changes
       run: |
-        git diff origin/development origin/test || echo "Changes found"
+        git diff development test || echo "Changes found"
 
   push-to-test:
     needs: check-for-changes
