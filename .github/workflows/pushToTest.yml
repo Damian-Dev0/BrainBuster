@@ -18,16 +18,16 @@ jobs:
       - name: Check for Changes
         run: |
           git fetch origin develop
-          if git diff --quiet origin/develop HEAD; then
+          if git diff --quiet origin/development HEAD; then
             echo "No changes detected. Skipping push to test branch."
             exit 0
           fi
       - name: Push to Test Branch
         run: |
-          git checkout develop
+          git checkout development
           git pull
           git checkout test
-          git merge develop
+          git merge development
           git push origin HEAD:test
           echo "Pushing changes to test branch."
         env:
