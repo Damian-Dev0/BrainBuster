@@ -2,7 +2,8 @@ name: Auto-Push nach Test-Branch
 
 on:
   push:
-    branches: [development]
+    branches:
+      - development
 
 jobs:
   check-for-changes:
@@ -11,12 +12,12 @@ jobs:
     - name: Checkout des Codes
       uses: actions/checkout@v2
       
-    - name: Check Changes between development branch and test branch
+    - name: Überprüfe Änderungen zwischen development und test
+      id: check_changes
       run: |
         git fetch origin development:test-changes
         git diff --quiet HEAD test-changes || echo "Changes found"
         git branch -D test-changes
-      id: check_changes
       continue-on-error: true
 
   push-to-test:
