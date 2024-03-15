@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}">
     <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
-<body onload="NextQuestion(0)">
+<body>
     <div class="login-wrap">
         <h2>Login</h2>
         
@@ -16,13 +16,15 @@
           <div class="form"> 
           <input type="text" placeholder="Username" name="un" />
           <input type="password" placeholder="Password" name="pw" />
-          <button> Sign in </button>
-          <a href="register"> <p> Don't have an account? Register </p></a>
+          <button> Sign in </button> 
+          <a href="/register"> <p> Don't have an account? Register </p></a>
         </div>
 
-        {% if error_Message  %}
-        <p class="error">{{error_Message}}</p>
-        {% endif %} 
+        {% for message in messages %}
+        {% if "FalseUserNameORPassword" in message.tags %}
+        <p class="LoginError">{{message}}</p>
+        {% endif %}
+        {% endfor %} 
       </div>
 </body>
 </html>
