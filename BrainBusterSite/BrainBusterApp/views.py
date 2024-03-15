@@ -24,7 +24,7 @@ def register(request):
         
         # Check if Users Input for Password is different
         if password1 != password2:
-            # messages.error(request, "Passwörter stimmen nicht überein.", extra_tags="PasswordRegisterError")
+            #The parameter extra_tag is a identifier for the error message. It is used, so that the error message is not rendered on other pages.
             messages.add_message(request, messages.ERROR,"Passwörter stimmen nicht überein.", extra_tags="PasswordRegisterError")
             return render(request, "register.html")
         
@@ -65,6 +65,7 @@ def userLogin(request):
             #Redirection to page when successful login
             return render(request, 'menu.html')
         else:
+            #The parameter extra_tag is a identifier for the error message. It is used, so that the error message is not rendered on other pages.
             messages.add_message(request, messages.ERROR,'Benutzername nicht gefunden oder falsches Passwort eingegeben.', extra_tags="FalseUserNameORPassword")
             
     return render(request, "login.html", )
