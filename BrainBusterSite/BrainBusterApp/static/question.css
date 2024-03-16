@@ -7,14 +7,12 @@ body {
     
 .container {
     width: 40%;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between !important;
     height: 100%;
     background-color: beige;
-    border: 1px black;
+    border: 1em solid black;
 }
 
 h1 {

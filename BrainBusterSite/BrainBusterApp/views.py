@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Question
 
 # Create your views here.
 def index(request):
@@ -9,7 +10,8 @@ def menu(request):
     return render(request, 'menu.html')
 
 def question(request):
-    return render(request, 'question.html')
+    fragen = Question.objects.all()
+    return render(request, 'question.html', {'fragen': fragen})
 
 def login(request):
     return render(request, 'login.html')
