@@ -17,6 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from BrainBusterApp.views import menu
+from BrainBusterApp.views import question
+from BrainBusterApp.views import login
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('menu/', menu, name='menu'),
+    path('question/', question, name='question'),
+    path('login/', login, name='login'),
 ]

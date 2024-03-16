@@ -1,4 +1,7 @@
 {% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -15,25 +18,32 @@
             <p>Was ist die Hauptstadt von Frankreich?</p>
         </div>
         <div class="options">
-            <div class="option">
-                <input id="option1" class="radio-button" type="radio" name="answer">
-                <label for="option1"></label>
-                <span>Paris</span>
+            <div class="form-check rounded p-3 mb-2 bg-light">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Madrid
+                </label>
             </div>
-            <div class="option">
-                <input id="option2" class="radio-button" type="radio" name="answer">
-                <label for="option2"></label>
-                <span>Berlin</span>
+
+            <div class="form-check rounded p-3 mb-2 bg-light">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Berlin
+                </label>
             </div>
-            <div class="option">
-                <input id="option3" class="radio-button" type="radio" name="answer">
-                <label for="option3"></label>
-                <span>London</span>
+
+            <div class="form-check rounded p-3 mb-2 bg-light">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    London
+                </label>
             </div>
-            <div class="option">
-                <input id="option4" class="radio-button" type="radio" name="answer">
-                <label for="option4"></label>
-                <span>Rom</span>
+
+            <div class="form-check rounded p-3 mb-2 bg-light">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Rom
+                </label>
             </div>
         </div>
 
