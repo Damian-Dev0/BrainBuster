@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(254, 245, 230);
+    margin: 0;
+    padding: 0;
+}
+    
+.container {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
+    height: 100%;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.question {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.question span {
+    color: #63B759 !important;
+    display: inline-block;
+    flex: 0 0 1em;
+    font-weight: 500;
+    position: relative;
+    font-size: 1.22rem;
+    line-height: 45px;
+}
+
+.radio-button {
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.option {
+    background-color: rgba(255, 255, 255, 0.27);
+    border: 1px solid;
+    border-color: rgba(139, 139, 139, 0.62);
+    border-radius: 13px !important;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-bottom: .6em;
+    min-height: 30px;
+    padding: .85em .88em;
+    word-break: break-word;
+    box-sizing: border-box;
+}
+
+.option:hover {
+    background-color: rgb(255, 254, 237);
+    border-color: rgb(206, 226, 191);
+}
+
+.option input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.option label {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.option span {
+    margin-left: 20px;
+}
+
+.div-outer-next-button {
+    margin-left: auto;
+    margin-top: 1em;
+    font-size: 14px;
+}
+
+.div-inner-next-button {
+    opacity: 1;
+    transform: translateY(20px);
+    pointer-events: all;
+    transform: translateY(0);
+    transition: .5s ease;
+    display: flex;
+    align-items: center;
+}
+
+.div-inner-next-button span {
+    padding-right: 1em;
+    margin: 0;
+    color: #2d2d2d;
+    font-style: italic;
+    box-sizing: border-box;
+}
+
+.append-icon {
+    padding: 1.1px 1.3em;
+    margin: 0;
+    font-size: 1em;
+    font-weight: 700;
+    border-radius: 7px !important;
+    background-color: #63B759 !important;
+    color: white !important;
+    box-sizing: border-box;
+}
+
+.text-wrapper {
+    margin: 0;
+    margin-left: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
