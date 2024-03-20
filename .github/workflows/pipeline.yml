@@ -1,0 +1,16 @@
+name: default
+  
+on: 
+ push:
+  branches:
+    - "tyrone"
+  pull_request:
+    branches:
+    - "tyrone"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "hello world"
