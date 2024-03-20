@@ -1,9 +1,9 @@
 name: default
   
 on: 
- push:
-  branches:
-    - "tyrone"
+  push:
+    branches:
+      - "tyrone"
   pull_request:
     branches:
     - "tyrone"
