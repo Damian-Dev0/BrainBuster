@@ -23,7 +23,7 @@ jobs:
         run: python ./BrainBusterSite/manage.py test BrainBusterApp
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Stylelinet
         run: npx stylelint "**/*.css"
