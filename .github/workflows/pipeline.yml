@@ -1,20 +1,17 @@
-name: Run tests
-  
-on: 
+name: Validate Code
+
+on:
   push:
     branches:
       - "tyrone"
 
 jobs:
-  super-linter:
-    name: Lint code
+  run-tests:
+    name: Unit tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run Super-Linter
-        uses: github/super-linter@v4
-        env:
-          DEFAULT_BRANCH: tyrone
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      - name: Run Test
+        run: python manage.py test BrainBusterApp
