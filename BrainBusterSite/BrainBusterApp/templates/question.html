@@ -1,53 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}">
-    <link rel="stylesheet" href="{% static 'question.css' %}">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}" />
+    <link rel="stylesheet" href="{% static 'question.css' %}" />
+  </head>
+  <body>
     <div class="container">
+      <form action="/BrainBusterApp/question/" method="post" class="form">
+        {% csrf_token %}
+        <!-- send question back to server -->
+        <input type="hidden" name="question" value="{{question}}">
+        <!-- send category back to server -->
+        <input type="hidden" name="category" value="{{category}}">
+
         <h1>Quizfrage</h1>
         <div class="question">
-            <span data-v-11ba321c="" class="question-order">1.</span>
-            <p>Was ist die Hauptstadt von Frankreich?</p>
+          <span class="question-order">1.</span>
+          <p>{{ question }}</p>
         </div>
-        <div class="options">
-            <div class="option">
-                <input id="option1" class="radio-button" type="radio" name="answer">
-                <label for="option1"></label>
-                <span>Paris</span>
-            </div>
-            <div class="option">
-                <input id="option2" class="radio-button" type="radio" name="answer">
-                <label for="option2"></label>
-                <span>Berlin</span>
-            </div>
-            <div class="option">
-                <input id="option3" class="radio-button" type="radio" name="answer">
-                <label for="option3"></label>
-                <span>London</span>
-            </div>
-            <div class="option">
-                <input id="option4" class="radio-button" type="radio" name="answer">
-                <label for="option4"></label>
-                <span>Rom</span>
-            </div>
-        </div>
+        {% if result %}
+          <p class="{% if result.is_correct %}correct-answer{%else%}false-answer{% endif %}">
+            Die richtige antwort ist {{result.answer}}
+          </p>
+        {% elif answers %}
+          <div class="options">
+            {% for answer in answers %}
+              <div class="option">
+                <input id="{{answer}}" required class="radio-button" type="radio" name="user_answer" value="{{answer}}" />
+                <label for="{{answer}}">
+                  <span>{{answer}}</span>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
 
         <div class="div-outer-next-button">
-            <div class="div-inner-next-button">
-                <span>Press <strong>ENTER</strong></span>
-                <div class="append-icon">
-                    <div class="text-wrapper">
-                        <p>Next</p>
-                    </div>
-                </div>
+          <div class="div-inner-next-button">
+            <span>Press <strong>ENTER</strong></span>
+            <div class="append-icon">
+              <button type="submit" class="button">
+                <p>Next</p>
+              </button>
             </div>
+          </div>
         </div>
+      </form>
 
     </div>
-</body>
+    <script>
+      const button = document.querySelector(".button");
+      button.focus();
+    </script>
+  </body>
+  
 </html>

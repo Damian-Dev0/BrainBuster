@@ -1,12 +1,22 @@
+from typing import Any
 from django.db import models
 from django.core.exceptions import ValidationError
 
 # Create your models here.
 
+class Category(models.Model):
+    Category_ID = models.AutoField(primary_key=True, editable=False)
+    Category = models.CharField(max_length=255)
+    
+    def __str__(self) -> str:
+        return self.Category
+
+
 class Question(models.Model):
     Question_ID = models.AutoField(primary_key=True, editable=False)
     Question_Text = models.TextField()
-    
+    Category = models.ForeignKey(Category, default=False, on_delete=models.SET_DEFAULT)
+
     def __str__(self) -> str:
         if not self.Question_Text:
             raise ValueError("Der Fragetext darf nicht leer sein.")

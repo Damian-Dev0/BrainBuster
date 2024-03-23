@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}" />
+    <link rel="stylesheet" href="{% static 'question.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+        <h1>Dein Score:</h1>
+        <p>Du hast {{ score }} von {{ total }} Fragen richtig beantwortet!</p>
+
+        <a href="/BrainBusterApp/">Zurück zur Startseite</a>
+
+        <form  action="/BrainBusterApp/question/" method="POST">
+            {% csrf_token %}
+            <button type="submit" name="category" value="Geographie">Erneut versuchen</button>
+        </form>
+    </div>
+  </body>
+  
+</html>
