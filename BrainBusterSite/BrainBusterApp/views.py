@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Question, Answers, Category
+from .models import Question, Answers, Category, Score
 from BrainBusterApp.forms import CustomUserCreationForm
 from django.urls import reverse
 import random
+from django.contrib.auth import login
+
+def get_top_scores():
+    return Score.objects.order_by('-Points')[:10]
 
 def index(request):
     return render(request, 'index.html')
@@ -18,11 +22,17 @@ def register(request):
             {"form": CustomUserCreationForm}
         )
     elif request.method == "POST":
+        print(request.POST)
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-        return redirect(reverse(index))
+            return redirect(reverse(index))
+        # stay on page if registration not successful
+        return render(
+            request, "register.html",
+            {"form": CustomUserCreationForm, "message": "Passwort ist nicht sicher genug"}
+        )
 
 def question(request):
     # redirect to homepage if category isn't set or is get request
@@ -67,7 +77,7 @@ def question(request):
         
         # fetch questions that haven't been answered yet
         unanswered_questions = Question.objects.filter(Category = category_id).exclude(Question_ID__in = answered_questions.keys())
-        
+
         # show score and update total score if all questions have been answered
         if not unanswered_questions:
             # reset answered questions
@@ -80,12 +90,16 @@ def question(request):
             for result in question_results:
                 score += result
 
+            # user info
+            user = request.user
+            current_user_score = Score.objects.filter(User_ID = user.id)[0]
             # add 10 points per correct answer to user score
             points = score * 10
-            if "total_score" in request.session:
-                request.session["total_score"] = request.session["total_score"] + points
-            else:
-                request.session["total_score"] = points
+            current_user_score.Points += points
+            current_user_score.save()
+
+            # get top ten ranking
+            top_scores = get_top_scores()
 
             return render(
             request, 
@@ -93,7 +107,8 @@ def question(request):
             {
                 "score": score,
                 "total": total,
-                "user_points": request.session["total_score"]
+                "user_points": current_user_score.Points,
+                "top_scores": top_scores
             }
         )    
 
@@ -111,5 +126,12 @@ def question(request):
             }
         )
 
-def login(request):
-    return render(request, 'login.html')
+def rankings(request):
+    rankings = get_top_scores()
+    return render(
+        request, 
+        'rankings.html',
+        {
+            "rankings": rankings
+        }
+    )

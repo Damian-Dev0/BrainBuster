@@ -14,9 +14,14 @@
 
         <p>Deine Gesamtpunktzahl ist nun: {{user_points}}</p>
 
+        <strong>Top 10 Brain Buster</strong>
+        {% for user in top_scores %}
+          {{user.Points}}
+        {% endfor%}
+
         <a href="/">Zurück zur Startseite</a>
 
-        <form  action="/BrainBusterApp/question/" method="POST">
+        <form  action="/question/" method="POST">
             {% csrf_token %}
             <button type="submit" name="category" value="Geographie">Erneut versuchen</button>
         </form>

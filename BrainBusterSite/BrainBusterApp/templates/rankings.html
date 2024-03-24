@@ -1,0 +1,6 @@
+{% load static %}
+<h1>Top Users</h1>
+{% for user in rankings %}
+    {{user.Points}}
+    <br/>
+{% endfor%}

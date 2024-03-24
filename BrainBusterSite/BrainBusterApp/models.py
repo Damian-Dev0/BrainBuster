@@ -43,3 +43,10 @@ class Answers(models.Model):
             other_correct_answers = Answers.objects.filter(Question = self.Question, Is_Correct = True).exclude(pk=self.pk)
             if other_correct_answers.exists():
                 raise ValidationError({"Is_Correct": ["Es kann nur eine Antwort richtig sein!"]})
+            
+class Score(models.Model):
+    User_ID = models.IntegerField(primary_key=True, editable=False)
+    Points = models.IntegerField(0)
+
+    def __str__(self) -> str:
+        return self.User_ID.__str__()

@@ -16,8 +16,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./BrainBusterSite/requirements.txt
 
-      - name: Run Test
+      - name: Run Tests
         run: python ./BrainBusterSite/manage.py test BrainBusterApp
+
   lint:
     runs-on: ubuntu-latest
 

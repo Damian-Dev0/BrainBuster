@@ -4,6 +4,9 @@
 <form method="post">
     {% csrf_token %}
     {{form}}
+    {%if message%}
+        <p style="color:red">{{message}}</p>
+    {% endif%}
     <input type="submit" value="Register">
 </form>
 
