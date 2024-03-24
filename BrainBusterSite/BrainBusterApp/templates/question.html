@@ -1,13 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}" />
-    <link rel="stylesheet" href="{% static 'question.css' %}" />
-  </head>
-  <body>
+{% extends 'base.html'%}
+{% block content %}
     <div class="container">
       <form action="/question/" method="post" class="form">
         {% csrf_token %}
@@ -55,6 +47,4 @@
       const button = document.querySelector(".button");
       button.focus();
     </script>
-  </body>
-  
-</html>
+{% endblock %}

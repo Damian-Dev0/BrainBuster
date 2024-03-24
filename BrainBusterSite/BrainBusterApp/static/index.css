@@ -29,3 +29,30 @@
 .hidden {
     visibility: hidden;
 }
+
+.nav {
+    display: flex;
+    list-style: none;
+    height: 40px;
+    background-color: #fff;
+    padding: 0;
+}
+
+.nav li {
+    width: 50%;
+    display: flex;
+}
+
+.nav li:hover a {
+    color:rgba(0, 0, 0, 0.6);
+}
+
+.nav a {
+    color: black;
+    text-decoration: none;
+    width: 100%;
+}
+
+.nav img {
+    height: 100%;
+}

@@ -4,10 +4,21 @@ from .models import Question, Answers, Category, Score
 from BrainBusterApp.forms import CustomUserCreationForm
 from django.urls import reverse
 import random
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 
 def get_top_scores():
-    return Score.objects.order_by('-Points')[:10]
+    User = get_user_model()
+    scores = Score.objects.order_by('-Points')[:10]
+
+    top_scores = []
+    for score in scores:
+        user_and_score = {
+            "user": User.objects.filter(id=score.User_ID)[0].username,
+            "score": score.Points
+        }
+        top_scores.append(user_and_score)
+    return top_scores
+
 
 def index(request):
     return render(request, 'index.html')
@@ -99,7 +110,7 @@ def question(request):
             current_user_score.save()
 
             # get top ten ranking
-            top_scores = get_top_scores()
+            rankings = get_top_scores()
 
             return render(
             request, 
@@ -108,7 +119,7 @@ def question(request):
                 "score": score,
                 "total": total,
                 "user_points": current_user_score.Points,
-                "top_scores": top_scores
+                "rankings": rankings
             }
         )    
 

@@ -1,6 +1,10 @@
-{% load static %}
+{% extends 'base.html'%}
+{% block content %}
 <h1>Top Users</h1>
-{% for user in rankings %}
-    {{user.Points}}
+{% for rank in rankings %}
+    {{ forloop.counter }}.    
+    {{rank.user}}:
+    {{rank.score}}
     <br/>
 {% endfor%}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}" />
+        <link rel="stylesheet" href="{% static 'question.css' %}" />
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+    </head>
+    <body>
+        <div class="container">
+        <nav>
+            <ul class="nav">
+                <li>
+                    <a href="/"><img src="{% static 'logo.png' %}" alt=""></a>
+                </li>
+                <li>
+                    <a href="/rankings">
+                        Rankings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        {% block content %}
+        {% endblock %}
+        </div>
+    </body>
+    <script src="{% static 'index.js' %}"></script>
+  
+</html>

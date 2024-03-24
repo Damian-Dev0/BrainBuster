@@ -1,31 +1,23 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}" />
-    <link rel="stylesheet" href="{% static 'question.css' %}" />
-  </head>
-  <body>
-    <div class="container">
-        <h1>Dein Score:</h1>
-        <p>Du hast {{ score }} von {{ total }} Fragen richtig beantwortet!</p>
+{% extends 'base.html'%}
+{% block content %}
+    <h1>Dein Score:</h1>
+    <p>Du hast {{ score }} von {{ total }} Fragen richtig beantwortet!</p>
 
-        <p>Deine Gesamtpunktzahl ist nun: {{user_points}}</p>
+    <p>Deine Gesamtpunktzahl ist nun: {{user_points}}</p>
 
-        <strong>Top 10 Brain Buster</strong>
-        {% for user in top_scores %}
-          {{user.Points}}
-        {% endfor%}
+    <strong>Top 10 Brain Buster</strong>
+    {% for rank in rankings %}
+      {{ forloop.counter }}.    
+      {{rank.user}}:
+      {{rank.score}}
+      <br/>
+  {% endfor%}
 
-        <a href="/">Zurück zur Startseite</a>
+    <a href="/">Zurück zur Startseite</a>
 
-        <form  action="/question/" method="POST">
-            {% csrf_token %}
-            <button type="submit" name="category" value="Geographie">Erneut versuchen</button>
-        </form>
-    </div>
-  </body>
-  
-</html>
+    <form  action="/question/" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="category" value="Geographie">Erneut versuchen</button>
+    </form>
+
+    {% endblock %}
