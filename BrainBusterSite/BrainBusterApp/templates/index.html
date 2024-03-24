@@ -14,7 +14,7 @@
     <h1>BrainBuster Quiz</h1>
     <div class="container">
         <h2>Wähle eine Kategorie</h2>
-        <form action="/BrainBusterApp/question/" method="POST">
+        <form action="/question/" method="POST">
             {% csrf_token %}
             <input class="button index-button" type="submit" name="category" value="Sport">
             <input class="button index-button" type="submit" name="category" value="Geographie">
@@ -28,6 +28,18 @@
             <button class="button index-button modal-button">OK</button>
         </div>
     </div>
+
+<div>
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
+
     <script src="{% static 'index.js' %}"></script>
 </body>
 </html>

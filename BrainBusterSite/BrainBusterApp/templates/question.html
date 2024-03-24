@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="container">
-      <form action="/BrainBusterApp/question/" method="post" class="form">
+      <form action="/question/" method="post" class="form">
         {% csrf_token %}
         <!-- send question back to server -->
         <input type="hidden" name="question" value="{{question}}">

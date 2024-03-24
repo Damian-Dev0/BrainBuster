@@ -1,0 +1,11 @@
+{% block content %}
+<h2>Registrieren</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Register">
+</form>
+
+<p>Du hast schon einen Account?<a href="{% url 'login' %}">Login</a></p>
+{% endblock %}

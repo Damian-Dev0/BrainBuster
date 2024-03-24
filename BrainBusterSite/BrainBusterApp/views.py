@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Question, Answers, Category
+from BrainBusterApp.forms import CustomUserCreationForm
+from django.urls import reverse
 import random
 
 def index(request):
@@ -8,6 +10,19 @@ def index(request):
 
 def menu(request):
     return render(request, 'menu.html')
+
+def register(request):
+    if request.method == "GET":
+        return render(
+            request, "register.html",
+            {"form": CustomUserCreationForm}
+        )
+    elif request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+        return redirect(reverse(index))
 
 def question(request):
     # redirect to homepage if category isn't set or is get request
