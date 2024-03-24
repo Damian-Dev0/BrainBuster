@@ -13,6 +13,11 @@ body {
     flex-direction: column;
     justify-content: space-between !important;
     height: 100%;
+    align-items: center;
+}
+
+.form {
+    width: 100%;
 }
 
 h1 {
@@ -129,7 +134,7 @@ h1 {
 .button {
     margin: 0;
     box-sizing: border-box;
-    background-color: transparent;
+    background-color: #63B759;
     border: none;
     padding: 0 20px;
 }

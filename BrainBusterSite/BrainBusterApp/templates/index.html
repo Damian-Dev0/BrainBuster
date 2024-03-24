@@ -6,15 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{% static 'icon.png' %}" />
+    <link rel="stylesheet" href="{% static 'question.css' %}">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
     <title>BrainBuster</title>
 </head>
 <body>
-    <h1>BrainBuster Quizz</h1>
-    <h2>Select a quiz</h2>
-    <form action="/BrainBusterApp/question/" method="POST">
-        {% csrf_token %}
-        <input type="submit" name="category" value="Sport">
-        <input type="submit" name="category" value="Geographie">
-    </form>
+    <h1>BrainBuster Quiz</h1>
+    <div class="container">
+        <h2>Wähle eine Kategorie</h2>
+        <form action="/BrainBusterApp/question/" method="POST">
+            {% csrf_token %}
+            <input class="button index-button" type="submit" name="category" value="Sport">
+            <input class="button index-button" type="submit" name="category" value="Geographie">
+        </form>
+        <p class="help-text">Drück <strong>h</strong> für Hilfe.</p>
+    </div>
+    <div class="help-modal-container hidden">
+        <div class="help-modal">
+            <span>Um das Quiz zu starten, wähle eine Kategorie.</span>
+            <span>Nachdem alle Fragen beantwortet wurden, wird dir deine Punktzahl angezeigt.</span>
+            <button class="button index-button modal-button">OK</button>
+        </div>
+    </div>
+    <script src="{% static 'index.js' %}"></script>
 </body>
 </html>
