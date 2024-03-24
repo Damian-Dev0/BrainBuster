@@ -53,7 +53,7 @@ def question(request):
         # fetch questions that haven't been answered yet
         unanswered_questions = Question.objects.filter(Category = category_id).exclude(Question_ID__in = answered_questions.keys())
         
-        # show score if all questions have been answered
+        # show score and update total score if all questions have been answered
         if not unanswered_questions:
             # reset answered questions
             del request.session[selected_category]
@@ -65,12 +65,20 @@ def question(request):
             for result in question_results:
                 score += result
 
+            # add 10 points per correct answer to user score
+            points = score * 10
+            if "total_score" in request.session:
+                request.session["total_score"] = request.session["total_score"] + points
+            else:
+                request.session["total_score"] = points
+
             return render(
             request, 
             'score.html', 
             {
                 "score": score,
-                "total": total
+                "total": total,
+                "user_points": request.session["total_score"]
             }
         )    
 
